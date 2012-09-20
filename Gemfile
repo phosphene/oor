@@ -7,7 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 
-group :dev do
+group :development do
   gem 'quiet_assets'
   gem 'thin'
 end
