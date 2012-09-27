@@ -2,6 +2,9 @@ require 'minitest/autorun'
 # Let's have pretty test reports: https://github.com/CapnKernul/minitest-reporters
 require 'minitest/reporters'
 MiniTest::Reporters.use! MiniTest::Reporters::SpecReporter.new
+require_relative '../spec_helper_lite'
+stub_module 'ActiveModel::Conversion'
+stub_module 'ActiveModel::Naming'
 require_relative '../../app/models/post'
 
 describe Post do

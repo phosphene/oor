@@ -12,9 +12,12 @@ class Blog
     "Read it now!"
   end
   def new_post(*args)
-    post_source.call(*args).tap do |p|
-      p.blog = self
-    end
+    # post_source.call(*args).tap do |p|
+    #   p.blog = self
+    # end
+    p = post_source.call(*args)
+    p.blog = self
+    p
   end
   def add_entry(entry)
     @entries << entry
