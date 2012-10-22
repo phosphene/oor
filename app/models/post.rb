@@ -5,7 +5,7 @@ class Post
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
-  attr_accessor :title, :body, :blog, :pubdate
+  attr_accessor :title, :body, :blog, :pubdate, :image_url
 
   validates :title, presence: true
   
@@ -17,6 +17,10 @@ class Post
     return false unless valid?
     self.pubdate = clock.now
     blog.add_entry(self)
+  end
+  
+  def picture?
+    image_url.present?
   end
 
   # Need this to allow form_for to decide if this is an edit or new

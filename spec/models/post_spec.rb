@@ -14,6 +14,7 @@ describe Post do
     @post_created_without_args = Post.new
     @post_created_without_args.title.must_be_nil
     @post_created_without_args.body.must_be_nil
+    @post_created_without_args.image_url.must_be_nil
   end
 
   it "supports reading and writing a title" do
@@ -24,6 +25,11 @@ describe Post do
   it "supports reading and writing a post body" do
     @it.body = "foo"
     @it.body.must_equal "foo"
+  end
+
+  it "supports reading and writing an image_url" do
+    @it.image_url = "http://example.com"
+    @it.image_url.must_equal "http://example.com"
   end
 
   it "supports reading and writing a blog reference" do
@@ -103,5 +109,16 @@ describe Post do
       end 
     end
   end
-  
+
+  describe "#picture?" do 
+    it "is true when the post has an picture url" do
+      @it.image_url = "http://example.com/ex.jpg"
+      assert(@it.picture?)
+    end  
+
+    it "is fase when the post has a blank picture url" do
+      @it.image_url = ''
+      refute(@it.picture?)
+    end  
+  end  
 end
