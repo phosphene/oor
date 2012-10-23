@@ -19,13 +19,13 @@ describe ExhibitsHelper do
   it "decorates picture posts with a PicturePostExhibit" do
     post = Post.new
     stub(post).picture?{true}
-    @it.exhibit(post, @context).must_be_kind_of(PicturePostExhibit)
+    assert(@it.exhibit(post, @context).class == PicturePostExhibit)
   end
 
   it "decorates text posts with a TextPostExhibit" do
     post = Post.new
     stub(post).picture?{false}
-    @it.exhibit(post, @context).must_be_kind_of(TextPostExhibit)
+    assert(@it.exhibit(post, @context).class == TextPostExhibit)
   end
 
   it "leaves objects it doesn't know about alone" do
