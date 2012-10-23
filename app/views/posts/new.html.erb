@@ -11,8 +11,11 @@
       </ul>
     </div>
   <% end %>
-  Title: <%= f.text_field :title %><br />
-  Body: <%= f.text_area :body %><br />
-  Picture URL: <%= f.text_field :image_url %><br />
+  <label>Title:</label> 
+  <%= f.text_field :title %><br />
+  <label>Body:</label> 
+  <%= f.text_area :body %><br />
+  <label>Picture URL:</label>
+  <%= f.text_field :image_url %><br />
   <%= f.submit %>
 <% end %>
