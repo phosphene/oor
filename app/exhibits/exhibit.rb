@@ -1,10 +1,5 @@
 require 'delegate'
 class Exhibit < SimpleDelegator
-  def initialize(model, context)
-    @context = context
-    super(model)
-  end
-
   def to_model
     __getobj__
   end
@@ -13,6 +8,14 @@ class Exhibit < SimpleDelegator
     __getobj__.class
   end
 
+  def initialize(model, context)
+    @context = context
+    super(model)
+  end
+
+  # Register all the known exhibit subclasses here - in the order you
+  # want them applied to your model objects. Classes defined later 
+  # override those defined earlier in the list.
   def self.exhibits
     [TextPostExhibit, PicturePostExhibit]
   end
@@ -32,6 +35,8 @@ class Exhibit < SimpleDelegator
     end
   end
 
+  # the default, set in this superclass, is always "doesn't apply to me"
+  # So each subclass must define which model objects it is a delegate for.
   def applicable_to?(obj)
     false
   end
