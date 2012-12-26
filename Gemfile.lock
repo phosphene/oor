@@ -22,6 +22,8 @@ GEM
       activesupport (= 3.2.8)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-nulldb-adapter (0.2.3)
+      activerecord (>= 2.0.0)
     activeresource (3.2.8)
       activemodel (= 3.2.8)
       activesupport (= 3.2.8)
@@ -39,6 +41,7 @@ GEM
       execjs
     coffee-script-source (1.3.3)
     daemons (1.1.9)
+    database_cleaner (0.9.1)
     erubis (2.7.0)
     eventmachine (1.0.0)
     execjs (1.4.0)
@@ -126,7 +129,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-nulldb-adapter
   coffee-rails (~> 3.2.1)
+  database_cleaner
   jquery-rails
   minitest-reporters
   quiet_assets

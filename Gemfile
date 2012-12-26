@@ -15,6 +15,8 @@ end
 group :test do
   gem 'minitest-reporters'
   gem 'rr'
+  gem 'database_cleaner'
+  gem 'activerecord-nulldb-adapter'
 end
 
 # Gems used only for assets and not required

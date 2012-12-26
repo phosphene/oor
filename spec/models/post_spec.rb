@@ -2,12 +2,19 @@ require 'minitest/autorun'
 # Let's have pretty test reports: https://github.com/CapnKernul/minitest-reporters
 require 'minitest/reporters'
 MiniTest::Reporters.use! MiniTest::Reporters::SpecReporter.new
-require_relative '../spec_helper_lite'
+require_relative '../spec_helper_nulldb'
 require_relative '../../app/models/post'
 
 describe Post do
+  include SpecHelpers
   before do
+    setup_nulldb
     @it = Post.new(title: "Post title")
+    @ar = @it
+  end
+
+  after do
+    teardown_nulldb
   end
 
   it "starts with blank attributes" do
@@ -116,7 +123,7 @@ describe Post do
       assert(@it.picture?)
     end  
 
-    it "is fase when the post has a blank picture url" do
+    it "is false when the post has a blank picture url" do
       @it.image_url = ''
       refute(@it.picture?)
     end  

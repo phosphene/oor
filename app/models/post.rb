@@ -1,17 +1,11 @@
-require 'active_model'
+require 'date'
+require 'active_record'
 
-class Post
-  extend ActiveModel::Naming
-  include ActiveModel::Conversion
-  include ActiveModel::Validations
-
-  attr_accessor :title, :body, :blog, :pubdate, :image_url
+class Post < ActiveRecord::Base
+  attr_accessible :title, :body, :image_url, :pubdate
+  attr_accessor :blog
 
   validates :title, presence: true
-  
-  def initialize(attrs={})
-    attrs.each do |k,v| send("#{k}=", v) end
-  end
 
   def publish(clock=DateTime)
     return false unless valid?
@@ -21,10 +15,5 @@ class Post
   
   def picture?
     image_url.present?
-  end
-
-  # Need this to allow form_for to decide if this is an edit or new
-  def persisted?
-    false
   end
 end
