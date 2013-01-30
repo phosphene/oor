@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -17,6 +17,15 @@ group :test do
   gem 'rr'
   gem 'database_cleaner'
   gem 'activerecord-nulldb-adapter'
+  gem 'faker'
+  gem 'factory_girl_rails', '~> 2.0'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'pry'
+  gem 'rspec-rails'
+  gem 'awesome_print'
+  gem 'capybara-screenshot'
+
 end
 
 # Gems used only for assets and not required
